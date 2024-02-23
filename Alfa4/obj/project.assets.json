@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\stilec2\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\micha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "M:\\PV 2023 - 24\\Alfa4\\Alfa4\\Alfa4.csproj",
-      "projectName": "Alfa4",
-      "projectPath": "M:\\PV 2023 - 24\\Alfa4\\Alfa4\\Alfa4.csproj",
-      "packagesPath": "C:\\Users\\stilec2\\.nuget\\packages\\",
-      "outputPath": "M:\\PV 2023 - 24\\Alfa4\\Alfa4\\obj\\",
+      "projectUniqueName": "C:\\Users\\micha\\Documents\\School\\PV\\PV 2023-24\\Alpha4\\Alpha4.csproj",
+      "projectName": "Alpha4",
+      "projectPath": "C:\\Users\\micha\\Documents\\School\\PV\\PV 2023-24\\Alpha4\\Alpha4.csproj",
+      "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\micha\\Documents\\School\\PV\\PV 2023-24\\Alpha4\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\stilec2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
