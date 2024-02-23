@@ -11,7 +11,7 @@ namespace Alfa4
     public class Peer
     {
         public static UdpClient udpClient;
-        private static string myPeerId = "molic-peer1"; // Změňte podle potřeby
+        private static string myPeerId = "XDD"; // Změňte podle potřeby
         public static ManualResetEvent receiveDone = new ManualResetEvent(false);
 
         public static void StartUdpListener()
