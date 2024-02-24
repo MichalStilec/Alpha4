@@ -4,7 +4,7 @@
 - Kontakt: stilec2@spsejecna.cz
 - Datum vypracování: 9.2.2024 - 25.2.2024
 - Název školy: Střední průmyslová elektrotechnická škola (SPŠE) Ječná 
-- Hardwareové požadavky: Windows 10/11, internetové připojení, PuTTY
+- Hardwareové požadavky: internetové připojení, PuTTY
 - Jazyk: C#
   
 # Jak spustit program
