@@ -11,20 +11,32 @@ namespace Alpha4
     public class UDPdiscovery
     {
         public static UdpClient udpClient;
-        private static string myPeerId = "stilec2"; 
-        public static ManualResetEvent receiveDone = new ManualResetEvent(false);
+        private static string myPeerId = Config.LoadPeer();
+        private static string port = Config.LoadPort();
+        private static int portInt = int.Parse(port);
 
+        /// <summary>
+        /// Starts the UDP listener on a separate thread
+        /// </summary>
         public static void Start()
         {
             try
             {
-                udpClient = new UdpClient(9876);
-                Thread udpListenerThread = new Thread(UdpListener);
-                udpListenerThread.Start();
+                udpClient = new UdpClient(portInt);
+                Thread udpThread = new Thread(UdpListener);
+                udpThread.Start();
+                Logs.LogSuccess("Succesfully started the UDP listener");
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                Logs.LogError(ex);
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
 
+        /// <summary>
+        /// Listens for incoming UDP messages and processes them
+        /// </summary>
         public static void UdpListener()
         {
             while (true)
@@ -37,8 +49,7 @@ namespace Alpha4
 
                     Console.WriteLine("Q: " + message);
 
-                    // Process the received message and send a response
-                    string response = ProcessReceivedMessage(message);
+                    string response = ReceiveMessage(message);
                     if (!string.IsNullOrEmpty(response))
                     {
                         Console.WriteLine("A: " + response);
@@ -46,36 +57,47 @@ namespace Alpha4
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error parsing message: {ex.Message}");
+                    Logs.LogError(ex);
+                    Console.WriteLine($"Error: {ex.Message}");
                 }
             }
         }
 
-        public static string ProcessReceivedMessage(string receivedMessage)
+        /// <summary>
+        /// Processes the received UDP message and generates a response
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static string ReceiveMessage(string msg)
         {
             try
             {
-                if (receivedMessage.Contains("\"command\":\"hello\""))
+                if (msg.Contains("\"command\":\"hello\""))
                 {
-                    int startIndex = receivedMessage.IndexOf("\"peer_id\":\"") + "\"peer_id\":\"".Length;
-                    int endIndex = receivedMessage.IndexOf("\"", startIndex);
-                    string peerId = receivedMessage.Substring(startIndex, endIndex - startIndex);
+                    int start = msg.IndexOf("\"peer_id\":\"") + "\"peer_id\":\"".Length;
+                    int end = msg.IndexOf("\"", start);
+                    string peerId = msg.Substring(start, end - start);
 
-                    if (peerId != "stilec2")
+                    if (!string.Equals(peerId, myPeerId))
                     {
+                        Logs.LogSuccess("Succesfuly recieved message");
                         return $"{{\"status\":\"ok\",\"peer_id\":\"{myPeerId}\"}}";
                     }
                 }
 
-                return string.Empty;
+                return "";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error processing message: {ex.Message}");
-                return string.Empty;
+                Logs.LogError(ex);
+                Console.WriteLine($"Error: {ex.Message}");
+                return "";
             }
         }
 
+        /// <summary>
+        /// Sends the message every 5 seconds
+        /// </summary>
         public static void UdpDiscovery()
         {
             Timer udpDiscoveryTimer = new Timer((state) =>
@@ -84,11 +106,14 @@ namespace Alpha4
             }, null, 0, 5000);
         }
 
+        /// <summary>
+        /// Sends a message to all peers in the network
+        /// </summary>
         public static void SendMessage()
         {
             string udpMessage = $"{{\"command\":\"hello\",\"peer_id\":\"{myPeerId}\"}}";
             byte[] data = Encoding.UTF8.GetBytes(udpMessage);
-            udpClient.Send(data, data.Length, new IPEndPoint(IPAddress.Broadcast, 9876));
+            udpClient.Send(data, data.Length, new IPEndPoint(IPAddress.Broadcast, portInt));
         }
     }
 }

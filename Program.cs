@@ -9,7 +9,6 @@
 
             Console.ReadLine(); 
             UDPdiscovery.udpClient.Close();
-            UDPdiscovery.receiveDone.Set();
         }
     }
 }

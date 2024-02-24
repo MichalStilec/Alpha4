@@ -1,0 +1,30 @@
+
+{
+  "Timestamp": "2024-02-24T13:00:35.3596485+01:00",
+  "SuccessMessage": "Succesfully started the UDP listener"
+}
+{
+  "Timestamp": "2024-02-24T13:01:53.6911485+01:00",
+  "SuccessMessage": "Succesfully started the UDP listener"
+}
+{
+  "Timestamp": "2024-02-24T13:05:03.8618939+01:00",
+  "SuccessMessage": "Succesfully started the UDP listener"
+}
+{
+  "Timestamp": "2024-02-24T13:05:15.5213888+01:00",
+  "SuccessMessage": "Succesfully started the UDP listener"
+}
+{
+  "Timestamp": "2024-02-24T13:05:24.7028327+01:00",
+  "ErrorMessage": "Specified argument was out of the range of valid values. (Parameter \u0027port\u0027)",
+  "StackTrace": "   at System.Net.Sockets.UdpClient..ctor(Int32 port, AddressFamily family)\r\n   at System.Net.Sockets.UdpClient..ctor(Int32 port)\r\n   at Alpha4.UDPdiscovery.Start() in C:\\Users\\micha\\Documents\\School\\PV\\PV 2023-24\\Alpha4\\UDPdiscovery.cs:line 25"
+}
+{
+  "Timestamp": "2024-02-24T13:05:47.62124+01:00",
+  "SuccessMessage": "Succesfully started the UDP listener"
+}
+{
+  "Timestamp": "2024-02-24T13:06:36.1032509+01:00",
+  "SuccessMessage": "Succesfully started the UDP listener"
+}
